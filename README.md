@@ -3,9 +3,9 @@ This project aims at creating a monitor for a home front door capable of reporti
 The monitor should have the following caractheristics:
 
 * Wireless, including power supply (battery operated)
-* Possibility to work on single or double doors entrances
-* Report type of transit (exit, enter, let guest in), only for double door
-* Report to mobile phone, over internet not locally
+* Working on double doors entrances
+* Report type of transit (exit, enter, let guest in)
+* Report to mobile phone, over internet
 
 
 Direction of transit detection
@@ -21,3 +21,12 @@ In case of double doors it's possible, by looking at the order in which doors op
 |Int Open|Int Close| | |Checking door lock|
 |Ext Open|Int Open|Int Close|Ext Close|Forgot to take something|
 
+From a first guess we could assume we need to track two variables (internal and external door) and their status. Since we have maximum 4 transitions before the doors go back to being both closed we could fit in one byte a value that represents that all transaction. All we need to do is to store a 2-bits snapshot of the doors conditions at every change and process the result when we come back to both doors closed. If we define the higher bit of the pair to be the external door then the following binary sequences would apply:
+
+|Binary Sequence|Decimal|Case
+| --- | --- | --- | --- | --- |
+|10110100|180|Coming in|
+|01111000|120|Going out|
+|01110100|116|Letting someone in|
+|01000000|64|Checking door lock|
+|10111000|184|Forgot to take something|
