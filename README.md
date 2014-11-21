@@ -4,7 +4,7 @@ The monitor should have the following caractheristics:
 
 * Wireless, including power supply (battery operated)
 * Working on double doors entrances
-* Report type of transit (exit, enter, let guest in)
+* Report type of transit (exit, enter)
 * Report to mobile phone, over internet
 
 
@@ -30,3 +30,10 @@ From a first guess we could assume we need to track two variables (internal and 
 |01110100|116|Letting someone in|
 |01000000|64|Checking door lock|
 |10111000|184|Forgot to take something|
+
+Delivering a message to mobile
+=========================
+
+Message delivery can be achieved in several ways. One, that would be a good candidate to gain some experience in Android development, is to use Google Cloud Messaging (GCM) and then build a service application listening for GCM messages. Since I had already explored this area in other projects I decided to try something different. So I came across "Pushover" which offers an Android client ($4.99), HTTP API and free messages up to what amounts to a very large cap for a personal application like this, that is 7500 messages per month. As I live in a private home and not a railway station those should do.
+
+The API is a REST HTTP API and uses OAuth for authentication. And here you hit the first problem
