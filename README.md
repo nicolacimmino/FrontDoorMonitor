@@ -1,6 +1,6 @@
 This project aims at creating a monitor for a home front door capable of reporting to a mobile phone activity through such door. In particular, for a double door entrance, it should report wether someone entered or exited the house.
 
-The picture below shows the completed assembly. One the sides are the reed relays that sense the status of the doors.
+The picture below shows the completed assembly. One the sides are the reed relays that sense the status of the doors. The blue module on the right is the ESP8266, the WiFi module.
 
 ![Proto](documentation/proto.png)
 
