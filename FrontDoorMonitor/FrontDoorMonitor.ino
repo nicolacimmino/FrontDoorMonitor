@@ -39,7 +39,6 @@ TEENSY3_LP LP = TEENSY3_LP();
 
 void setup()
 {
-  Serial.begin(115200);
   
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, HIGH);
@@ -80,8 +79,8 @@ void setup()
   int attempt=0;
   for(; attempt<MAX_CONNECT_ATTEMPTS;attempt++)
   {
-    if(connectWiFi()) break; 
-  
+    if(connectWiFi()) 
+      break; 
     delay(1000);
   }
   
@@ -91,7 +90,7 @@ void setup()
     goToSleep();  
   }
  
-  delay(2000);
+  delay(3000);
   sendEvent(transitDiection);
   
   goToSleep();
@@ -149,11 +148,9 @@ boolean connectWiFi()
   delay(2000);
   if (Serial1.find("OK"))
   {
-    Serial.println("OK, Connected to WiFi.");
     return true;
   } else
   {
-    Serial.println("Can not connect to the WiFi.");
     return false;
   }
 }
@@ -161,12 +158,11 @@ boolean connectWiFi()
 boolean sendEvent(char event)
 {
   // Open HTTP port on destination address
-  String cmd = "AT+CIPSTART=\"TCP\",\"";
+  String cmd = "AT+CIPSTART=\"TCP\",\"";  
   cmd += DST_IP;
   cmd += "\",80";
   Serial1.println(cmd);
-  Serial.println(cmd);
-  delay(1000);
+  delay(500);
   
   // Perform HTTP GET request. This is the header.
   cmd = "GET /door.php?ev=";
@@ -186,9 +182,8 @@ boolean sendEvent(char event)
   Serial1.print(cmd);
   Serial.println(cmd);
   
-  delay(2000);
+  delay(4000);
   Serial1.println("AT+CIPCLOSE");
-  Serial.println("done http");
     
   return true;
 }
