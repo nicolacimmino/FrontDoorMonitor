@@ -1,6 +1,6 @@
 This project aims at creating a monitor for a home front door capable of reporting to a mobile phone activity through such door. In particular, for a double door entrance, it should report wether someone entered or exited the house.
 
-The picture below shows the completed assembly. One the sides are the reed relays that sense the status of the doors. The blue module on the right is the ESP8266, the WiFi module.
+The picture below shows the completed assembly. One the sides are the reed relays that sense the status of the doors. The blue module on the right is the ESP8266, the WiFi module. For this first prototype I am using a Teensy, which is a rather expensive option for what it needs to do, I have used it though as it's easier for debugging as it has multiple serial ports, so I can keep one speking to the ESP8266 and the other spitting out debug data. I will replace it at some point with an Arduino Nano.
 
 ![Proto](documentation/proto.png)
 
